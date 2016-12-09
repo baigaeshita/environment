@@ -1,0 +1,83 @@
+[http]
+	sslVerify = false
+[user]
+	email = pohan_pong@htc.com
+	name = Jonathan Pong
+[color]
+    ui = auto
+  branch = auto
+  diff = auto
+  status = auto
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+[color "branch"]
+  current = cyan reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[giggle]
+    main-window-maximized = true
+    main-window-geometry = 0x0+0+0
+    history-view-vpane-position = 488
+    file-view-vpane-position = 1046
+    main-window-view = HistoryView
+    file-view-hpane-position = 383
+[core]
+    excludesfile = ~/.gitignore_global
+    editor = vim
+[alias]
+  co = checkout
+  log1 = log --pretty=one
+  graphviz = !~/bin/git-graphviz
+  dot = !~/bin/git-dot
+  stat = status
+  st = status -s -uno
+  sb = show-branch --color
+  ci = commit
+  br = branch
+  df = diff
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  lod =  log --graph --pretty=format:'%C(yellow)%h%Creset%C(cyan)%C(bold)%d%Creset %C(cyan)(%cD)%Creset %C(green)%ce%Creset %s' 
+  wtf = !~/bin/git-wtf
+  snippets = !git log --pretty=format:'%ai | %s' --all --since='@{1 week ago}' --no-merges | sort | uniq
+  p = !git5 pending
+  lol = log --pretty --oneline --decorate
+  lolg = log --pretty --oneline --decorate --graph
+  lola = log --pretty --oneline --decorate --all
+  lolag = log --pretty --oneline --decorate --all --graph
+  lc = log --graph --pretty=format:'%C(yellow)%h%Creset%Cred%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+  fshow = ! sh -c 'git show --pretty="format:" --name-only $1 | grep -v "^$" | uniq | sed -e "s#^#$(git rev-parse --show-toplevel)/#"' -
+  edit  = ! sh -c '$EDITOR $(git fshow $1)' -
+  lomax = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+[repo-alias]
+  toupload = !~/bin/repo-toupload
+  lol5 = forall -pc git lol -5 HEAD ^m/master
+  br = branch
+  st = forall -vpc git -c color.status=always st
+  stat = status -j6
+  lol = forall -pc git log --color --pretty='format:" %C(yellow)%h %C(cyan)%d %C(reset)%s"'
+  lolag = forall -pc git lolag
+  current = !~/bin/repo-current-branch
+  cur = current
+  tg-start = !~/bin/repo-tg-start
+  tg = !~/bin/repo-tg
+  tg-upload = !~/bin/repo-tg-upload
+  uploadr = upload
+  snippets = forall -vpc git snippets
+  bcmgrep = !~/bin/repo-bcm-grep
+[credential]
+    helper = cache  --socket $HOME/roylou/.git-credential-cache/socket
+[diff]
+    tool = vimdiff
+[push]
+	default = simple
